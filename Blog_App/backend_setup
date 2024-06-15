@@ -1,0 +1,10 @@
+Initialize Node.js project:
+mkdir blog-website
+cd blog-website
+npm init -y
+npm install express mongoose body-parser express-session bcryptjs connect-flash
+
+Start MongoDB:
+mongod
+Start the Server:
+node server.js
