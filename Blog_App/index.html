@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Blog Posts</h1>
+        <div id="posts"></div>
+        <a href="/new" class="new-post-link">Write a New Post</a>
+        <a href="/login" class="login-link">Login</a>
+        <a href="/register" class="register-link">Register</a>
+        <a href="/profile" class="profile-link">Profile</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('/posts')
+                .then(response => response.json())
+                .then(posts => {
+                    const postsDiv = document.getElementById('posts');
+                    posts.forEach(post => {
+                        const postElement = document.createElement('div');
+                        postElement.innerHTML = `
+                            <h2>${post.title}</h2>
+                            <p>${post.content.substring(0, 100)}...</p>
+                            <a href="/post/${post._id}">Read more</a>
+                        `;
+                        postsDiv.appendChild(postElement);
+                    });
+                });
+        });
+    </script>
+</body>
+</html>
