@@ -1,0 +1,11 @@
+Initialize Node.js project:
+mkdir registration-form
+cd registration-form
+npm init -y
+npm install express mongoose body-parser
+
+Start MongoDB:
+mongod
+
+Start the Server:
+node server.js
